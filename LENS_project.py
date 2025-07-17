@@ -7,12 +7,40 @@ language_model=joblib.load("lang_det.pkl")
 news_model=joblib.load("news_cat.pkl")
 review_model=joblib.load("review.pkl")
 
+st.set_page_config(layout="wide", page_title="LENS eXpert", page_icon="🔍")
 
+# Custom background and style
+st.markdown("""
+    <style>
+        body {
+            background: linear-gradient(135deg, #f3f4f7 0%, #dfe9f3 100%);
+        }
+        .stTextInput > div > div > input {
+            font-size: 20px !important;
+            color: #FFFF00;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
-st.title("LENSE eXpert(NLP Suits)")
-tab1,tab2,tab3,tab4=st.tabs(["🤖 Spam Classifier","Language Detection","Food Review Sentiment","News Classification"])
+# App title
+st.markdown("""
+    <h1 style='background-color: #daf759; 
+                font-size: 36px; 
+                color: #000; 
+                padding: 10px; 
+                border-radius: 12px; 
+                text-align: center;
+                margin-top: -30px;'>
+         LENS eXpert(NLP Suite)
+    </h1>
+""", unsafe_allow_html=True)
+
+# Tabs
+tab1, tab2, tab3, tab4 = st.tabs(["📨 Spam Classifier", "🌐 Language Detection", "🍽️ Food Review Sentiment", "🗞️ News Classification"])
+
 with tab1:
-    msg=st.text_input("Enter Msg")
+    st.subheader("📨 Spam Classifier")
+    msg= st.text_input("Enter text")
     if st.button("Prediction" ,key="b1"):
         pred=spam_model.predict([msg])
         if pred[0]==0:
@@ -20,7 +48,7 @@ with tab1:
         else:
             st.image("not_spam.png")
 
-    uploaded_file = st.file_uploader("Choose a file",type=["csv", "txt"])
+    uploaded_file = st.file_uploader("📁 Upload a file (CSV/TXT):", type=["csv"], key="upload_msg")
    
   
     if uploaded_file:
@@ -41,8 +69,7 @@ with tab2:
         pred = language_model.predict([msg])
         st.success(f"Predicted Language: {pred[0]}")
 
-    uploaded_file_lang = st.file_uploader("Upload text file for language detection", type=["txt", "csv"], key="upload_lang")
-
+    uploaded_file_lang = st.file_uploader("📁 Upload a file (CSV/TXT):", type=["csv"], key="upload_lang")
     if uploaded_file_lang:
         df_lang = pd.read_csv(uploaded_file_lang, header=None, names=["Text"])
         predictions = language_model.predict(df_lang["Text"])
@@ -60,7 +87,8 @@ with tab3:
         sentiment = "Positive 😊" if prediction == 1 else "Negative 😞"
         st.success(f"Sentiment: {sentiment}")
 
-    uploaded_file_review = st.file_uploader("Upload CSV file of reviews", type=["csv"], key="upload_review")
+    uploaded_file_review = st.file_uploader("📁 Upload a file (CSV/TXT):", type=["csv"], key="upload_review")
+
 
     if uploaded_file_review:
         df_reviews = pd.read_csv(uploaded_file_review, header=None, names=["Review"])
@@ -70,13 +98,43 @@ with tab3:
         df_reviews.index = range(1, len(df_reviews)+1)
         st.dataframe(df_reviews)
 
+# --- Tab 4: News Classification ---
+with tab4:
+    st.subheader("🗞️ News Classification")
+    
+    msg4 = st.text_input("📰 Enter a news headline or article to classify the topic:", key="msg_input4")
+    
+    if st.button("🔍 Predict", key="news_detection"):
+        pred = news_model.predict([msg4])
+        st.success(f"📰 {pred[0]}")
 
-st.sidebar.image("img.png")
+    uploaded_file = st.file_uploader("📁 Upload a file (CSV/TXT):", type=["csv", "txt"], key="news_file")
+    if uploaded_file:
+        df_news = pd.read_csv(uploaded_file, header=None, names=["Msg"])
+        pred = news_model.predict(df_news.Msg)
+        df_news.index = range(1, df_news.shape[0] + 1)
+        df_news["Prediction"] = pred
+        st.dataframe(df_news)      
+
+
+st.sidebar.image("C:\\Users\\Deepak\\Desktop\\img.png")
 with st.sidebar.expander("🧑‍🤝‍🧑 About us"):
     st.write("This NLP project is created as part of my exploration into machine learning and its real-world applications.")
 with st.sidebar.expander("📞 Contact us"):
     st.write("9319561817")
     st.write(" 📩 deepakmaury1062004@gmail.com")
+with st.sidebar.expander("🤝 Help & Instructions"):
+    st.markdown("""
+    <ul style='font-size: 14px;'>
+        <li>Type or upload text to test the model.</li>
+        <li>Use supported file formats: <b>.csv</b> or <b>.txt</b>.</li>
+        <li>After prediction, download the result using the button.</li>
+    </ul>
+    """, unsafe_allow_html=True)
+    
+
+
+
     
 
 
