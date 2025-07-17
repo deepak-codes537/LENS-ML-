@@ -117,7 +117,8 @@ with tab4:
         st.dataframe(df_news)      
 
 
-st.sidebar.image("img.png")
+#st.sidebar.image("img.png")
+st.sidebar.image("img2.jpg")
 with st.sidebar.expander("🧑‍🤝‍🧑 About us"):
     st.write("This NLP project is created as part of my exploration into machine learning and its real-world applications.")
 with st.sidebar.expander("📞 Contact us"):
