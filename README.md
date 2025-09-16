@@ -1,4 +1,4 @@
-# 🧠 LENSE eXpert (NLP Suits)
+# 🧠 LENSE eXpert (NLP Suite)
 
 This project is a NLP web app made with Streamlit.  
 It has features like spam check, language detection, review sentiment, and news classification — all in one place.  
