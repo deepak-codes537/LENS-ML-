@@ -1,6 +1,9 @@
-🧠 LENSE eXpert (NLP Suits)
+## 🧠 LENSE eXpert (NLP Suits)
 
-This project is an NLP-based web application built using Streamlit. It provides multiple Natural Language Processing utilities in one place, allowing users to analyze and classify text interactively.
+This project is a NLP web app made with Streamlit.  
+It has features like spam check, language detection, review sentiment, and news classification — all in one place.  
+Just type text or upload a file and get instant results.
+It provides multiple Natural Language Processing utilities in one place, allowing users to analyze and classify text interactively.
 
 🚀 Features
 
@@ -37,23 +40,6 @@ Joblib
 |-- requirements.txt
 |-- README.md
 |-- images/
-
-▶️ How to Run
-
-Clone this repository:
-
-git clone https://github.com/your-username/nlp-expert.git
-cd nlp-expert
-
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-Run the app:
-
-streamlit run app.py
 
 📧 Contact
 
