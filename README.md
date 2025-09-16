@@ -4,6 +4,7 @@ This project is a NLP web app made with Streamlit.
 It has features like spam check, language detection, review sentiment, and news classification — all in one place.  
 Just type text or upload a file and get instant results.
 It provides multiple Natural Language Processing utilities in one place, allowing users to analyze and classify text interactively.
+<a href="https://lensml.streamlit.app/"> View Project</a>
 
 🚀 Features
 
