@@ -6,7 +6,7 @@ Just type text or upload a file and get instant results.
 It provides multiple Natural Language Processing utilities in one place, allowing users to analyze and classify text interactively.
 <a href="https://lensml.streamlit.app/"> View Project</a>
 
-🚀 Features
+## 🚀 Features
 
 🤖 Spam Classifier – Detects whether a message is Spam or Not Spam.
 
@@ -20,7 +20,7 @@ It provides multiple Natural Language Processing utilities in one place, allowin
 
 📊 Interactive UI – Built with Streamlit for easy use.
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 Python
 
@@ -42,7 +42,7 @@ Joblib
 |-- README.md
 |-- images/
 
-📧 Contact
+## 📧 Contact
 
 Author: Deepak Maurya
 
