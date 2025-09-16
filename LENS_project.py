@@ -17,7 +17,7 @@ st.markdown("""
         }
         .stTextInput > div > div > input {
             font-size: 20px !important;
-            color: #FFFF00;
+            color: black !important;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -137,5 +137,6 @@ with st.sidebar.expander("🤝 Help & Instructions"):
 
 
     
+
 
 
